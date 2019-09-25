@@ -3,7 +3,7 @@
 - 3 Standard Queues (QueueA, QueueB, QueueC) are implemented.
 - The messages could be sent via command-line
   * [Code](https://github.com/jManij/sqs/tree/master/src/main/java/sqslab)
-  * [Test](https://github.com/jManij/sqs/blob/master/src/test/java/sqs/AppTest.java)
+  * [Test](https://github.com/jManij/sqs/blob/master/src/test/java/sqslab/ClientTest.java)
 
 
 ## Learning Objectives
