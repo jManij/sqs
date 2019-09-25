@@ -18,7 +18,7 @@ public class Client {
      * @param message - message that needs to be sent
      * @param URL - the char representing the URL it is going to
      */
-    public void sendMessage(String message, char URL) {
+    public String sendMessage(String message, char URL) {
         String queueURL = getURL(URL);
 
         final AmazonSQS sqs = AmazonSQSClientBuilder.defaultClient();
@@ -28,7 +28,7 @@ public class Client {
                 .withDelaySeconds(5);
         sqs.sendMessage(send_msg_request);
         System.out.println("The following message: '"+ message + "' is sent!");
-
+        return ("The following message: '"+ message + "' is sent!");
     }
 
     /**
@@ -36,7 +36,7 @@ public class Client {
      * @param URL
      */
 
-    public void receiveMessage(char URL) {
+    public List<Message> receiveMessage(char URL) {
         String queueUrl = getURL(URL);
         final AmazonSQS sqs = AmazonSQSClientBuilder.defaultClient();
         List<Message> messages = sqs.receiveMessage(queueUrl).getMessages();
@@ -46,6 +46,7 @@ public class Client {
             System.out.println("Message received: " + message.getBody());
             sqs.deleteMessage(queueUrl, message.getReceiptHandle());
         }
+        return messages;
     }
 
     /**
@@ -58,9 +59,7 @@ public class Client {
         String sqsURL = "";
         switch (URL){
             case 'A':
-                for (int i = 0; i < 5000; i++) {
-                    sqsURL = url.getQueueUrl_A();
-                }
+                sqsURL = url.getQueueUrl_A();
                 break;
 
             case 'B':
