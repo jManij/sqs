@@ -27,9 +27,9 @@ To understand how message queues work.
 * The receive and send methods will run until counter reaches to 1000 with sleep of 200 ms in between.
   
 ## Lambda PollerA, PollerB & PollerC Validation:  
-* ![](/allAssets/1.png)
-* ![](/allAssets/2.png)
-* ![](/allAssets/3.png)
+ ![](/allAssets/1.png)
+ ![](/allAssets/2.png)
+ ![](/allAssets/3.png)
 
 # Collaborators
 * Manish KC
