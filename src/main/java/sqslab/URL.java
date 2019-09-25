@@ -1,26 +1,15 @@
 package sqslab;
-import org.springframework.beans.factory.annotation.Value;
 
 
 public class URL {
 
-    @Value("${URL_A}")
-    private  String queueUrl_A;
 
-    @Value("${URL_B}")
-    private String queueUrl_B;
-
-    @Value("${URL_C}")
-    private String queueUrl_C;
-
-    @Value("${ARN_A}")
-    private String queueARN_A;
-
-    @Value("${ARN_B}")
-    private  String queueARN_B;
-
-    @Value("${ARN_C}")
-    private String queueARN_C;
+    private  String queueUrl_A = "https://sqs.us-west-2.amazonaws.com/836616260696/QueueA";
+    private String queueUrl_B = "https://sqs.us-west-2.amazonaws.com/836616260696/QueueB";
+    private String queueUrl_C = "https://sqs.us-west-2.amazonaws.com/836616260696/QueueC";
+    private String queueARN_A = "arn:aws:sqs:us-west-2:836616260696:QueueA";
+    private  String queueARN_B = "arn:aws:sqs:us-west-2:836616260696:QueueB";
+    private String queueARN_C = "arn:aws:sqs:us-west-2:836616260696:QueueC";
 
 
     public String getQueueUrl_A() {

@@ -5,12 +5,13 @@ import com.amazonaws.services.sqs.AmazonSQSClientBuilder;
 import com.amazonaws.services.sqs.model.Message;
 import com.amazonaws.services.sqs.model.SendMessageBatchRequest;
 import com.amazonaws.services.sqs.model.SendMessageBatchRequestEntry;
+import com.amazonaws.services.sqs.model.SendMessageRequest;
 
 import java.util.List;
 
 public class Client {
-
-
+    public Client() {
+    }
 
     /**
      * Receives message and URL notation to send messages
@@ -21,16 +22,12 @@ public class Client {
         String queueURL = getURL(URL);
 
         final AmazonSQS sqs = AmazonSQSClientBuilder.defaultClient();
-        SendMessageBatchRequest send_batch_request = new SendMessageBatchRequest()
+        SendMessageRequest send_msg_request = new SendMessageRequest()
                 .withQueueUrl(queueURL)
-                .withEntries(
-                        new SendMessageBatchRequestEntry(
-                                "msg_1", "Hello from message 1"),
-                        new SendMessageBatchRequestEntry(
-                                "msg_2", "Hello from message 2")
-                                .withDelaySeconds(10));
-        sqs.sendMessageBatch(send_batch_request);
-        System.out.println("Message Sent");
+                .withMessageBody(message)
+                .withDelaySeconds(5);
+        sqs.sendMessage(send_msg_request);
+        System.out.println("The following message: '"+ message + "' is sent!");
 
     }
 
@@ -46,7 +43,7 @@ public class Client {
 
 
         for (Message message: messages) {
-            System.out.println(message.getBody());
+            System.out.println("Message received: " + message.getBody());
             sqs.deleteMessage(queueUrl, message.getReceiptHandle());
         }
     }
@@ -56,12 +53,14 @@ public class Client {
      * @param URL
      * @return
      */
-    public String getURL(char URL) {
+    private String getURL(char URL) {
         URL url = new URL();
         String sqsURL = "";
         switch (URL){
             case 'A':
-                sqsURL = url.getQueueUrl_A();
+                for (int i = 0; i < 5000; i++) {
+                    sqsURL = url.getQueueUrl_A();
+                }
                 break;
 
             case 'B':
