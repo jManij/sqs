@@ -26,6 +26,7 @@ To understand how message queues work.
 * All these commands could be run simultaneously. Ensure that the queue is sent some message before receiving from it.
 * The receive and send methods will run until counter reaches to 1000 with sleep of 200 ms in between.
   
+![](../assets/1.png)
 
 # Collaborators
 * Manish KC
