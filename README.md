@@ -26,7 +26,10 @@ To understand how message queues work.
 * All these commands could be run simultaneously. Ensure that the queue is sent some message before receiving from it.
 * The receive and send methods will run until counter reaches to 1000 with sleep of 200 ms in between.
   
-![](/allAssets/1.png)
+## Lambda PollerA, PollerB & PollerC Validation:  
+* ![](/allAssets/1.png)
+* ![](/allAssets/2.png)
+* ![](/allAssets/3.png)
 
 # Collaborators
 * Manish KC
